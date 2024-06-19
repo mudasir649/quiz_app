@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+        </style>
+</head>
+<body>
+    <div class="main">
+        <div id="box">
+            <h1 id="quesBox">1) This is dummy question</h1>
+            <div class="row">
+                <input class="options" type="radio" value="a" name="option" id="option1">
+                <label for="option1"> Option 1 </label>
+            </div>
+            <div class="row">
+                <input class="options" type="radio" value="b" name="option" id="option2">
+                <label for="option2"> Option 2 </label>
+            </div>
+            <div class="row">
+                <input class="options" type="radio" value="c" name="option" id="option3">
+                <label for="option3"> Option 3 </label>
+            </div>
+            <div class="row">
+                <input class="options" type="radio" value="d" name="option" id="option4">
+                <label for="option4"> Option 4 </label>
+            </div>
+            <button class="btn" onclick=submitQuiz()>
+                Submit
+            </button>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
