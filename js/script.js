@@ -28,11 +28,15 @@ const questions = [
 let index = 0;
 let total = questions.length;
 let right = 0, wrong = 0;
-const data = questions[index];
 const quesBox = document.getElementById("quesBox");
-const optionsInput = document.querySelectorAll(".options")
+const optionsInput = document.querySelectorAll(".options");
 
 const loadQuestions = () => {
+    if(index == total){
+        return endQuiz();
+    }
+    reset();
+    const data = questions[index];
     quesBox.innerText = `${index + 1}) ${data.que}`;
     optionsInput[0].nextElementSibling.innerText = data.a;
     optionsInput[1].nextElementSibling.innerText = data.b;
@@ -40,42 +44,45 @@ const loadQuestions = () => {
     optionsInput[3].nextElementSibling.innerText = data.d;
 }
 
-const getAns = () => {
-    optionsInput.forEach((input) => {
-        if(input.checked){
-            return input.value;
-        }
-    })
-    return null;
-}
-
 const submitQuiz = () => {
-    const ans = getAns();
-    console.log(ans);
-    if(ans === data.correct){
-        alert("ok")
+    let ans = getAns();
+    reset();
+    const data = questions[index];
+    if(ans == data.correct){
+        right++;
     }else{
-        alert("wrong")
+        wrong++;
     }
-    // if(ans == data.correct){
-    //     right++;
-    // }else{
-    //     wrong++;
-    // }
-    // index++;
-    // loadQuestions();
+    index++;
+    loadQuestions();
     return;
 }
 
-const reset = () => {
-    optionsInput.forEach(() => {
+const getAns = () => {
+    let answer;
+    optionsInput.forEach((input) => {
         if(input.checked){
-            input.checked = false
+            answer = input.value;
+        }
+    });
+    return answer;
+}
+
+const reset = () => {
+    optionsInput.forEach((input) => {
+        if(input.checked){
+            input.checked = false;
         }
     })
+}
+
+const endQuiz = () => {
+    document.getElementById("box").innerHTML = `
+    <h3> Thank you for playing the quiz </h3>
+    <h2>${right} / ${total}</h2>
+    `
 }
 
 
 // initial load
-loadQuestions()
-
+loadQuestions();
